@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>التصنيفات | دليل خدمات الدعم</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div class="hero__text">
+        <div class="chips">
+    <img src="images/logo.png" class="logo" alt="شعار الجامعة">
+    <span class="chip">دليل خدمات الدعم</span>
+</div>
+        <h1>التصنيفات</h1>
+        <p>دليل تفاعلي لاستعراض التصنيفات الرئيسية والفئات الفرعية والبنود التابعة لها. اختاري تصنيفًا من القائمة أو استخدمي البحث للوصول للخدمة بسرعة.</p>
+      </div>
+      <div class="stats" aria-label="إحصائيات الدليل">
+        <div class="stat"><strong id="categoryCount">0</strong><span>تصنيف</span></div>
+        <div class="stat"><strong id="subcategoryCount">0</strong><span>فئة فرعية</span></div>
+        <div class="stat"><strong id="itemCount">0</strong><span>بند</span></div>
+      </div>
+    </header>
+
+    <section class="searchBox">
+      <span class="searchBox__icon">🔍</span>
+      <input id="searchInput" type="search" placeholder="ابحثي عن نظام، فئة فرعية، أو بند..." autocomplete="off" />
+      <button id="clearSearch" type="button">مسح</button>
+    </section>
+
+    <main class="workspace">
+      <aside class="sidebar">
+        <div class="panelTitle">
+          <h2>التصنيفات الرئيسية</h2>
+          <span>اختاري تصنيفًا</span>
+        </div>
+        <div id="categoriesList" class="categoryList"></div>
+      </aside>
+
+      <section class="content">
+        <div id="results" class="results hidden"></div>
+        <div id="viewer" class="viewer">
+          <div class="emptyState">
+            <div class="emptyState__icon">📂</div>
+            <h3>اختاري تصنيفًا من القائمة</h3>
+            <p>ستظهر هنا الفئات الفرعية والبنود التابعة لها.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
