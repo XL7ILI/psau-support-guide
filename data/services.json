@@ -1,20 +1,19 @@
 [
   {
-    "name": "General Inquiries   الاستفسارات العامة",
+    "name": "Application الأنظمة والتطبيقات",
     "subcategories": [
       {
-        "name": "IT Inquiries  استفسارات تقنية",
-        "items": []
+        "name": "التعاريف والبدلات",
+        "items": [
+          "بدل ندرة",
+          "بدل سكن",
+          "بدل تعليم جامعي",
+          "تعريف راتب",
+          "تعريف بدون راتب",
+          "تثبيت راتب",
+          "مكافأة الحاسب الآلي"
+        ]
       },
-      {
-        "name": "Non-IT Inquiries  استفسارات لاتخص تقنية المعلومات",
-        "items": []
-      }
-    ]
-  },
-  {
-    "name": "الأنظمة والتطبيقات",
-    "subcategories": [
       {
         "name": "BlackBoard بلاك بورد",
         "items": [
@@ -30,7 +29,15 @@
         ]
       },
       {
+        "name": "الفعاليات والأنشطة Event",
+        "items": []
+      },
+      {
         "name": "chatbot",
+        "items": []
+      },
+      {
+        "name": "خدمة العهد",
         "items": []
       },
       {
@@ -94,11 +101,11 @@
         "items": []
       },
       {
-        "name": "أداة امنية - Securtiy Tool",
+        "name": "إبتعاث خارجى",
         "items": []
       },
       {
-        "name": "إبتعاث خارجى",
+        "name": "أداة امنية - Securtiy Tool",
         "items": []
       },
       {
@@ -110,22 +117,6 @@
         "items": []
       },
       {
-        "name": "التحقق من وثيقة التخرج",
-        "items": []
-      },
-      {
-        "name": "التعاريف والبدلات",
-        "items": [
-          "بدل ندرة",
-          "بدل سكن",
-          "بدل تعليم جامعي",
-          "تعريف راتب",
-          "تعريف بدون راتب",
-          "تثبيت راتب",
-          "مكافأة الحاسب الآلي"
-        ]
-      },
-      {
         "name": "الخدمات والأجهزة الهاتفية",
         "items": []
       },
@@ -135,10 +126,6 @@
       },
       {
         "name": "السلف و الاعانات",
-        "items": []
-      },
-      {
-        "name": "الفعاليات والأنشطة Event",
         "items": []
       },
       {
@@ -166,18 +153,32 @@
         "items": []
       },
       {
-        "name": "برنامج تحفيز الباحثين-وقت",
+        "name": "طلب خارج الدوام",
         "items": []
       },
       {
-        "name": "بوابات القبول",
-        "items": [
-          "القبول الإلحاقي وتعديل الرغبات",
-          "بوابة قبول المنح",
-          "بوابة القبول للدراسات العليا",
-          "بوابة القبول للتجسير",
-          "بوابة القبول لبرامج الدبلومات المدفوعة"
-        ]
+        "name": "خدمة اللجان",
+        "items": []
+      },
+      {
+        "name": "التحقق من وثيقة التخرج",
+        "items": []
+      },
+      {
+        "name": "خدمة التوقيع الإلكتروني",
+        "items": []
+      },
+      {
+        "name": "خدمة بطاقات التهنئة",
+        "items": []
+      },
+      {
+        "name": "خدمة حساب المعدل التراكمي",
+        "items": []
+      },
+      {
+        "name": "برنامج تحفيز الباحثين-وقت",
+        "items": []
       },
       {
         "name": "بوابة الأنشطة الطلابية",
@@ -251,10 +252,6 @@
         ]
       },
       {
-        "name": "خدمة التوقيع الإلكتروني",
-        "items": []
-      },
-      {
         "name": "خدمة الدخول الموحّد",
         "items": [
           "مشاكل المصادقة Authentication",
@@ -269,35 +266,18 @@
         ]
       },
       {
-        "name": "خدمة العهد",
-        "items": []
-      },
-      {
-        "name": "خدمة اللجان",
-        "items": []
-      },
-      {
         "name": "خدمة المتعاقدين",
         "items": []
       },
       {
-        "name": "خدمة بطاقات التهنئة",
-        "items": []
-      },
-      {
-        "name": "خدمة ترقيات أعضاء هيئة التدريس",
-        "items": []
-      },
-      {
-        "name": "خدمة تفعيل حسابات أعضاء هيئة التدريس",
+        "name": "بوابات القبول",
         "items": [
-          "إصدار رقم محاضر",
-          "تحديث بيانات أكاديمي"
+          "القبول الإلحاقي وتعديل الرغبات",
+          "بوابة قبول المنح",
+          "بوابة القبول للدراسات العليا",
+          "بوابة القبول للتجسير",
+          "بوابة القبول لبرامج الدبلومات المدفوعة"
         ]
-      },
-      {
-        "name": "خدمة حساب المعدل التراكمي",
-        "items": []
       },
       {
         "name": "خدمة طلب الدارسة",
@@ -319,10 +299,6 @@
       },
       {
         "name": "طلاب الأمتياز (تعديل إلى خدمة إصدار شهادة امتياز)",
-        "items": []
-      },
-      {
-        "name": "طلب خارج الدوام",
         "items": []
       },
       {
@@ -393,6 +369,10 @@
         "items": []
       },
       {
+        "name": "نظام الحضور والانصراف (تعديل إلى خدمات الحضور والانصراف Attendance)",
+        "items": []
+      },
+      {
         "name": "نظام الحضور والانصراف (تعديل إلى خدمات الحضور والانصراف Attendance )",
         "items": [
           "طلبات الاستئذان",
@@ -400,10 +380,6 @@
           "طلبات مهمة العمل",
           "تقارير الحضور والانصراف"
         ]
-      },
-      {
-        "name": "نظام الحضور والانصراف (تعديل إلى خدمات الحضور والانصراف Attendance)",
-        "items": []
       },
       {
         "name": "نظام الدورات التدريبية",
@@ -450,6 +426,438 @@
       },
       {
         "name": "وحدة التغذية",
+        "items": []
+      },
+      {
+        "name": "خدمة ترقيات أعضاء هيئة التدريس",
+        "items": []
+      },
+      {
+        "name": "خدمة تفعيل حسابات أعضاء هيئة التدريس",
+        "items": [
+          "إصدار رقم محاضر",
+          "تحديث بيانات أكاديمي"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "General Inquiries الاستفسارات العامة",
+    "subcategories": [
+      {
+        "name": "IT Inquiries  استفسارات تقنية",
+        "items": []
+      },
+      {
+        "name": "Non-IT Inquiries  استفسارات لاتخص تقنية المعلومات",
+        "items": []
+      },
+      {
+        "name": "IT Inquiries استفسارات تقنية",
+        "items": []
+      },
+      {
+        "name": "Non-IT Inquiries استفسارات لا تخص تقنية المعلومات",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Systems الأنظمة",
+    "subcategories": [
+      {
+        "name": "Cisco Iron port",
+        "items": []
+      },
+      {
+        "name": "Citrix-VDI",
+        "items": []
+      },
+      {
+        "name": "Hyper-v",
+        "items": []
+      },
+      {
+        "name": "Java",
+        "items": []
+      },
+      {
+        "name": "Kaspersky",
+        "items": []
+      },
+      {
+        "name": "Linux",
+        "items": []
+      },
+      {
+        "name": "Microsoft System Center",
+        "items": []
+      },
+      {
+        "name": "Oracle",
+        "items": []
+      },
+      {
+        "name": "Other Middle ware systems",
+        "items": []
+      },
+      {
+        "name": "SharePoint",
+        "items": []
+      },
+      {
+        "name": "Trendmicro",
+        "items": []
+      },
+      {
+        "name": "Vmware",
+        "items": []
+      },
+      {
+        "name": "Windows",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Web مواقع الإنترنت",
+    "subcategories": [
+      {
+        "name": "Browser متصفح",
+        "items": []
+      },
+      {
+        "name": "Portal بوابة",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Security Systems أنظمة الحماية",
+    "subcategories": [
+      {
+        "name": "صلاحية على الأنظمة الأمنية",
+        "items": []
+      },
+      {
+        "name": "ALC",
+        "items": []
+      },
+      {
+        "name": "EDR",
+        "items": []
+      },
+      {
+        "name": "IAM",
+        "items": []
+      },
+      {
+        "name": "PAM",
+        "items": []
+      },
+      {
+        "name": "SIEM",
+        "items": []
+      },
+      {
+        "name": "VA Scanner",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Servers الخوادم",
+    "subcategories": [
+      {
+        "name": "Blade Server",
+        "items": []
+      },
+      {
+        "name": "Rack Server",
+        "items": []
+      },
+      {
+        "name": "Virtual Server",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Storage أجهزة التخزين",
+    "subcategories": [
+      {
+        "name": "SAN",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Network & security أجهزة الشبكة وأمن المعلومات",
+    "subcategories": [
+      {
+        "name": "Firewalls",
+        "items": []
+      },
+      {
+        "name": "IP Camera",
+        "items": []
+      },
+      {
+        "name": "IPS",
+        "items": []
+      },
+      {
+        "name": "Load Balancer",
+        "items": []
+      },
+      {
+        "name": "Network Node نقطة شبكة",
+        "items": []
+      },
+      {
+        "name": "Router",
+        "items": []
+      },
+      {
+        "name": "Switch",
+        "items": []
+      },
+      {
+        "name": "Wireless",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Printers & Copiers الطباعة والنسخ",
+    "subcategories": [
+      {
+        "name": "Barcode Printer",
+        "items": []
+      },
+      {
+        "name": "Copier",
+        "items": []
+      },
+      {
+        "name": "Network B/W Medium MFP",
+        "items": []
+      },
+      {
+        "name": "Network B/W Printer",
+        "items": []
+      },
+      {
+        "name": "Network B/W Small MFP",
+        "items": []
+      },
+      {
+        "name": "Network Color Medium MFP",
+        "items": []
+      },
+      {
+        "name": "Network Color Printer",
+        "items": []
+      },
+      {
+        "name": "Network Color Small MFP",
+        "items": []
+      },
+      {
+        "name": "Personal B/W Printer",
+        "items": []
+      },
+      {
+        "name": "Personal Color Printer",
+        "items": []
+      },
+      {
+        "name": "Plotter",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Licenses رخص البرامج",
+    "subcategories": [
+      {
+        "name": "Applications",
+        "items": []
+      },
+      {
+        "name": "Database",
+        "items": []
+      },
+      {
+        "name": "O.S",
+        "items": []
+      },
+      {
+        "name": "Support",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Links (Circuits) خطوط ودوائر الاتصال بالشبكة",
+    "subcategories": [
+      {
+        "name": "DIA",
+        "items": []
+      },
+      {
+        "name": "IP-VPN",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Database قواعد البيانات",
+    "subcategories": [
+      {
+        "name": "MS-SQL",
+        "items": []
+      },
+      {
+        "name": "MYSQL",
+        "items": []
+      },
+      {
+        "name": "Oracle",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Desktops & Peripherals الكمبيوتر وملحقاته",
+    "subcategories": [
+      {
+        "name": "Laptops",
+        "items": []
+      },
+      {
+        "name": "PCs",
+        "items": []
+      },
+      {
+        "name": "Scanner",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "IP telephone هاتف شبكي",
+    "subcategories": [
+      {
+        "name": "call manager",
+        "items": []
+      },
+      {
+        "name": "IP Phones",
+        "items": []
+      },
+      {
+        "name": "presence",
+        "items": []
+      },
+      {
+        "name": "unity connection",
+        "items": []
+      },
+      {
+        "name": "voice gateway",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Cybersecurity الأمن السيبراني",
+    "subcategories": [
+      {
+        "name": "استجابة الحوادث",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Data Center مركز البيانات",
+    "subcategories": [
+      {
+        "name": "Building Data Room",
+        "items": []
+      },
+      {
+        "name": "Disaster Recovery",
+        "items": []
+      },
+      {
+        "name": "Floor Data Room",
+        "items": []
+      },
+      {
+        "name": "Main",
+        "items": []
+      },
+      {
+        "name": "Site Data Room",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Audio Video سمعية وبصرية",
+    "subcategories": [
+      {
+        "name": "Cables",
+        "items": []
+      },
+      {
+        "name": "Display Monitor",
+        "items": []
+      },
+      {
+        "name": "Document Camera",
+        "items": []
+      },
+      {
+        "name": "E-Podium",
+        "items": []
+      },
+      {
+        "name": "Projectors",
+        "items": []
+      },
+      {
+        "name": "Smart Board",
+        "items": []
+      },
+      {
+        "name": "Sound System",
+        "items": []
+      },
+      {
+        "name": "Video Conference",
+        "items": []
+      },
+      {
+        "name": "Whiteboard",
+        "items": []
+      }
+    ]
+  },
+  {
+    "name": "Backup النسخ الاحتياطية",
+    "subcategories": [
+      {
+        "name": "Backup or Restore",
+        "items": []
+      },
+      {
+        "name": "Delete Backup",
+        "items": []
+      },
+      {
+        "name": "Tape library",
         "items": []
       }
     ]
