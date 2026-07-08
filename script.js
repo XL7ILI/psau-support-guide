@@ -77,19 +77,36 @@ function showCategory(catIndex, subIndex = null, itemText = null){
 }
 
 function renderSubCard(sub, idx, selectedSub, selectedItem){
-  const isSelected = Number(selectedSub) === idx;
-  const items = sub.items || [];
-  const itemsHtml = items.length
-    ? items.map(item => `<div class="item ${selectedItem && normalizeText(item) === normalizeText(selectedItem) ? "selected" : ""}">📄 ${escapeHtml(item)}</div>`).join("")
-    : `<div class="item empty-item">لا توجد بنود مسجلة تحت هذه الفئة</div>`;
+    const isSelected = Number(selectedSub) === idx;
+    const items = sub.items || [];
 
-  return `<article class="sub-card ${isSelected ? "open selected" : ""}" data-sub="${idx}">
-    <button class="sub-header" type="button">
-      <span class="sub-name"><span class="arrow">◀</span><span>📁 ${escapeHtml(sub.name)}</span></span>
-      <span class="badge">${items.length} بند</span>
-    </button>
-    <div class="items">${itemsHtml}</div>
-  </article>`;
+    const itemsHtml = items.length
+        ? items.map(item => {
+            const itemName = `${item.nameEn || ""} ${item.nameAr || ""}`.trim();
+
+            return `<div class="item ${
+                selectedItem && normalizeText(itemName) === normalizeText(selectedItem)
+                    ? "selected"
+                    : ""
+            }">
+                📄 ${escapeHtml(itemName)}
+            </div>`;
+        }).join("")
+        : `<div class="item empty-item">لا توجد بنود مسجلة تحت هذه الفئة</div>`;
+
+    return `<article class="sub-card ${isSelected ? "open selected" : ""}" data-sub="${idx}">
+        <button class="sub-header" type="button">
+            <span class="sub-name">
+                <span class="arrow">◀</span>
+                <span>📁 ${escapeHtml(`${sub.nameEn || ""} ${sub.nameAr || ""}`.trim())}</span>
+            </span>
+            <span class="badge">${items.length} بند</span>
+        </button>
+
+        <div class="items">
+            ${itemsHtml}
+        </div>
+    </article>`;
 }
 
 document.addEventListener("click", (event) => {
