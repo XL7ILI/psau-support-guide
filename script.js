@@ -11,7 +11,8 @@ async function loadData(){
   try{
     const response = await fetch("data/services.json");
     if(!response.ok) throw new Error("Failed to load services.json");
-    servicesData = await response.json();
+   const data = await response.json();
+servicesData = data.categories;
     updateStats();
     renderCategories();
     showCategory(0);
