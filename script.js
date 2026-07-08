@@ -36,7 +36,7 @@ function renderCategories(){
     const subs = cat.subcategories || [];
     const itemCount = subs.reduce((sum, sub) => sum + (sub.items || []).length, 0);
     return `<button class="category-tab" data-cat="${index}">
-      <span class="tab-title"><span>📂</span><b>${escapeHtml(cat.name)}</b></span>
+      <span class="tab-title"><span>📁</span><b>${escapeHtml(cat.nameEn)} ${escapeHtml(cat.nameAr)}</b></span>
       <span class="badge">${subs.length} / ${itemCount}</span>
     </button>`;
   }).join("");
