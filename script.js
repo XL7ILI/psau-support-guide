@@ -11,21 +11,28 @@ async function loadData(){
   try{
     const response = await fetch("data/services.json");
     if(!response.ok) throw new Error("Failed to load services.json");
-   const data = await response.json();
-servicesData = data.categories;
+
+    const data = await response.json();
+    servicesData = data.categories || data;
+
     updateStats();
     renderCategories();
     showCategory(0);
   }catch(error){
-    viewer.innerHTML = `<div class="emptyState"><h3>تعذر تحميل البيانات</h3><p>تأكدي أن Live Server شغال وأن ملف data/services.json موجود.</p></div>`;
+    viewer.innerHTML = `<div class="emptyState"><h3>تعذر تحميل البيانات</h3><p>تأكدي أن ملف data/services.json موجود.</p></div>`;
     console.error(error);
   }
+}
+
+function getName(obj){
+  return `${obj?.nameEn || ""} ${obj?.nameAr || ""}`.trim();
 }
 
 function updateStats(){
   const categories = servicesData.length;
   const subcategories = servicesData.reduce((sum, cat) => sum + (cat.subcategories || []).length, 0);
   const items = servicesData.reduce((sum, cat) => sum + (cat.subcategories || []).reduce((s, sub) => s + (sub.items || []).length, 0), 0);
+
   document.getElementById("categoryCount").textContent = categories;
   document.getElementById("subcategoryCount").textContent = subcategories;
   document.getElementById("itemCount").textContent = items;
@@ -35,8 +42,9 @@ function renderCategories(){
   categoriesList.innerHTML = servicesData.map((cat, index) => {
     const subs = cat.subcategories || [];
     const itemCount = subs.reduce((sum, sub) => sum + (sub.items || []).length, 0);
+
     return `<button class="category-tab" data-cat="${index}">
-      <span class="tab-title"><span>📁</span><b>${escapeHtml(cat.nameEn)} ${escapeHtml(cat.nameAr)}</b></span>
+      <span class="tab-title"><span>📁</span><b>${escapeHtml(getName(cat))}</b></span>
       <span class="badge">${subs.length} / ${itemCount}</span>
     </button>`;
   }).join("");
@@ -56,7 +64,7 @@ function showCategory(catIndex, subIndex = null, itemText = null){
 
   viewer.innerHTML = `<div class="viewer-head">
     <div class="viewer-title">
-      <h2>📂 ${escapeHtml(cat.name)}</h2>
+      <h2>📂 ${escapeHtml(getName(cat))}</h2>
       <p>اختاري فئة فرعية لعرض البنود التابعة لها.</p>
     </div>
     <div class="viewer-summary">
@@ -68,7 +76,7 @@ function showCategory(catIndex, subIndex = null, itemText = null){
     ${subs.map((sub, idx) => renderSubCard(sub, idx, subIndex, itemText)).join("")}
   </div>`;
 
-  if(subIndex !== null){
+  if(subIndex !== null && subIndex !== ""){
     setTimeout(() => {
       const target = viewer.querySelector(`.sub-card[data-sub="${subIndex}"]`);
       if(target) target.scrollIntoView({behavior:"smooth", block:"center"});
@@ -77,36 +85,34 @@ function showCategory(catIndex, subIndex = null, itemText = null){
 }
 
 function renderSubCard(sub, idx, selectedSub, selectedItem){
-    const isSelected = Number(selectedSub) === idx;
-    const items = sub.items || [];
+  const isSelected = Number(selectedSub) === idx;
+  const items = sub.items || [];
 
-    const itemsHtml = items.length
-        ? items.map(item => {
-            const itemName = `${item.nameEn || ""} ${item.nameAr || ""}`.trim();
+  const itemsHtml = items.length
+    ? items.map(item => {
+        const itemName = getName(item);
 
-            return `<div class="item ${
-                selectedItem && normalizeText(itemName) === normalizeText(selectedItem)
-                    ? "selected"
-                    : ""
-            }">
-                📄 ${escapeHtml(itemName)}
-            </div>`;
-        }).join("")
-        : `<div class="item empty-item">لا توجد بنود مسجلة تحت هذه الفئة</div>`;
+        return `<div class="item ${
+          selectedItem && normalizeText(itemName) === normalizeText(selectedItem) ? "selected" : ""
+        }">
+          📄 ${escapeHtml(itemName)}
+        </div>`;
+      }).join("")
+    : `<div class="item empty-item">لا توجد بنود مسجلة تحت هذه الفئة</div>`;
 
-    return `<article class="sub-card ${isSelected ? "open selected" : ""}" data-sub="${idx}">
-        <button class="sub-header" type="button">
-            <span class="sub-name">
-                <span class="arrow">◀</span>
-                <span>📁 ${escapeHtml(`${sub.nameEn || ""} ${sub.nameAr || ""}`.trim())}</span>
-            </span>
-            <span class="badge">${items.length} بند</span>
-        </button>
+  return `<article class="sub-card ${isSelected ? "open selected" : ""}" data-sub="${idx}">
+    <button class="sub-header" type="button">
+      <span class="sub-name">
+        <span class="arrow">◀</span>
+        <span>📁 ${escapeHtml(getName(sub))}</span>
+      </span>
+      <span class="badge">${items.length} بند</span>
+    </button>
 
-        <div class="items">
-            ${itemsHtml}
-        </div>
-    </article>`;
+    <div class="items">
+      ${itemsHtml}
+    </div>
+  </article>`;
 }
 
 document.addEventListener("click", (event) => {
@@ -133,6 +139,7 @@ document.addEventListener("click", (event) => {
 
 searchInput.addEventListener("input", () => {
   const query = normalizeText(searchInput.value);
+
   if(!query){
     resultsContainer.innerHTML = "";
     resultsContainer.classList.add("hidden");
@@ -142,15 +149,25 @@ searchInput.addEventListener("input", () => {
   const results = [];
 
   servicesData.forEach((cat, catIndex) => {
-    const subs = cat.subcategories || [];
-    if(normalizeText(cat.name).includes(query)){
-      subs.forEach((sub, subIndex) => results.push({type:"تصنيف", cat, sub, item:null, catIndex, subIndex}));
+    const catName = getName(cat);
+
+    if(normalizeText(catName).includes(query)){
+      results.push({type:"تصنيف", cat, sub:null, item:null, catIndex, subIndex:""});
     }
 
-    subs.forEach((sub, subIndex) => {
-      if(normalizeText(sub.name).includes(query)) results.push({type:"فئة فرعية", cat, sub, item:null, catIndex, subIndex});
+    (cat.subcategories || []).forEach((sub, subIndex) => {
+      const subName = getName(sub);
+
+      if(normalizeText(subName).includes(query)){
+        results.push({type:"فئة فرعية", cat, sub, item:null, catIndex, subIndex});
+      }
+
       (sub.items || []).forEach(item => {
-        if(normalizeText(item).includes(query)) results.push({type:"بند", cat, sub, item, catIndex, subIndex});
+        const itemName = getName(item);
+
+        if(normalizeText(itemName).includes(query)){
+          results.push({type:"بند", cat, sub, item, catIndex, subIndex});
+        }
       });
     });
   });
@@ -167,24 +184,40 @@ clearSearch.addEventListener("click", () => {
 
 function renderResults(results, query){
   resultsContainer.classList.remove("hidden");
+
   if(!results.length){
     resultsContainer.innerHTML = `<div class="result-card"><div class="result-main">لا توجد نتائج مطابقة.</div></div>`;
     return;
   }
 
   const limited = results.slice(0, 30);
-  resultsContainer.innerHTML = `<h3 class="results-title">نتائج البحث</h3>` + limited.map(r => `<div class="result-card" data-cat="${r.catIndex}" data-sub="${r.subIndex}" data-item="${escapeAttr(r.item || "")}">
-    <div class="result-path">${escapeHtml(r.cat.name)} ← ${escapeHtml(r.sub.name)}</div>
-    <div class="result-main">${r.item ? "📄" : "📁"} ${highlight(r.item || r.sub.name, query)}</div>
-    <span class="result-note">اضغطي لفتحها داخل الدليل</span>
-  </div>`).join("");
+
+  resultsContainer.innerHTML = `<h3 class="results-title">نتائج البحث</h3>` + limited.map(r => {
+    const catName = getName(r.cat);
+    const subName = r.sub ? getName(r.sub) : "";
+    const itemName = r.item ? getName(r.item) : "";
+
+    const mainText = r.item ? itemName : r.sub ? subName : catName;
+    const path = r.sub ? `${catName} ← ${subName}` : catName;
+
+    return `<div class="result-card" data-cat="${r.catIndex}" data-sub="${r.subIndex}" data-item="${escapeAttr(itemName)}">
+      <div class="result-path">${escapeHtml(path)}</div>
+      <div class="result-main">${r.item ? "📄" : "📁"} ${highlight(mainText, query)}</div>
+      <span class="result-note">اضغطي للانتقال مباشرة</span>
+    </div>`;
+  }).join("");
 }
 
 function openSearchResult(catIndex, subIndex, itemText){
   searchInput.value = "";
   resultsContainer.innerHTML = "";
   resultsContainer.classList.add("hidden");
-  showCategory(Number(catIndex), Number(subIndex), itemText || null);
+
+  if(subIndex === ""){
+    showCategory(Number(catIndex));
+  }else{
+    showCategory(Number(catIndex), Number(subIndex), itemText || null);
+  }
 }
 
 function normalizeText(text){
@@ -209,7 +242,9 @@ function escapeAttr(text){
 function highlight(text, query){
   const safe = escapeHtml(text);
   if(!query) return safe;
+
   const escaped = String(query).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
   try{
     return safe.replace(new RegExp(escaped, "gi"), match => `<mark>${match}</mark>`);
   }catch{
